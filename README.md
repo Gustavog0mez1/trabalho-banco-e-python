@@ -1,1 +1,0 @@
-# trabalho-banco-e-python
