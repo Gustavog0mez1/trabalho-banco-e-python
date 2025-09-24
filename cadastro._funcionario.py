@@ -1,13 +1,26 @@
 import random
+import hashlib
+import string
 
 print("=== CADASTRO FUNCIONARIO ===")
 email = input("Email: ")
 nome = input("Nome: ")
 cpf = input("CPF: ")
-if not cpf.isdigit():
-    print("ERRO: CPF deve conter apenas números!")
+if not cpf.isdigit() or len(cpf) != 11:
+    print("ERRO: CPF deve conter apenas números e ter 11 dígitos!")
 else:
     telefone = input("Telefone: ")
-    idade = input("Idade: ")
-    id_funcionario = random.randint(1, 1000)
-    print(f"Dados do funcionario: ID:{id_funcionario} Nome:{nome} Email:{email} CPF:{cpf} Telefone:{telefone} Idade:{idade}")
+    if not telefone.isdigit():
+        print("ERRO: Telefone deve conter apenas números!")
+    else:
+        idade = input("Idade: ")
+        if not idade.isdigit() or len(idade) > 3:
+            print("ERRO: Idade deve conter apenas números e no máximo 3 dígitos!")
+        else:
+            # Gera senha com letras, números e caracteres especiais
+            caracteres = string.ascii_letters + string.digits + "!@#$%&*"
+            senha_aleatoria = ''.join(random.choice(caracteres) for _ in range(8))
+            id_funcionario = random.randint(1000000000, 9999999999)
+            id_cliente = random.randint(1000000000, 9999999999)
+            senha_criptografada = hashlib.md5(senha_aleatoria.encode()).hexdigest()
+            print(f"Dados do funcionario: ID:{id_funcionario} ID Cliente:{id_cliente} Nome:{nome} Email:{email} CPF:{cpf} Telefone:{telefone} Idade:{idade} Senha Aleatória:{senha_aleatoria} Senha Criptografada:{senha_criptografada}")
