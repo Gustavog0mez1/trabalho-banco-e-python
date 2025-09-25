@@ -2,7 +2,7 @@ import random
 import hashlib
 import string
 
-print("=== CADASTRO FUNCIONARIO ===")
+print("=== CADASTRO CLIENTE ===")
 email = input("Email: ")
 nome = input("Nome: ")
 cpf = input("CPF: ")
@@ -20,7 +20,6 @@ else:
             # Gera senha com letras, números e caracteres especiais
             caracteres = string.ascii_letters + string.digits + "!@#$%&*"
             senha_aleatoria = ''.join(random.choice(caracteres) for _ in range(8))
-            id_funcionario = random.randint(1000000000, 9999999999)
             id_cliente = random.randint(1000000000, 9999999999)
             senha_criptografada = hashlib.md5(senha_aleatoria.encode()).hexdigest()
-            print(f"Dados do funcionario: ID:{id_funcionario} ID Cliente:{id_cliente} Nome:{nome} Email:{email} CPF:{cpf} Telefone:{telefone} Idade:{idade} Senha Aleatória:{senha_aleatoria} Senha Criptografada:{senha_criptografada}")
+            print(f"Cliente cadastrado! ID:{id_cliente} Nome:{nome} Email:{email} CPF:{cpf} Telefone:{telefone} Idade:{idade} Senha Aleatória:{senha_aleatoria} Senha Criptografada:{senha_criptografada}")
