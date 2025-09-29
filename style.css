@@ -176,3 +176,320 @@ body {
         font-size: 2rem;
     }
 }
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--dourado-medio);
+    color: var(--marrom-escuro);
+}
+
+.btn-primary:hover {
+    background-color: var(--dourado-escuro);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--roxo-medio);
+    color: var(--branco);
+}
+
+.btn-secondary:hover {
+    background-color: var(--roxo-escuro);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: var(--branco);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Cards */
+.card {
+    background-color: var(--branco);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background-color: var(--marrom-medio);
+    color: var(--dourado-claro);
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    background-color: var(--cinza-claro);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Formulários */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--marrom-escuro);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--marrom-claro);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--roxo-medio);
+    box-shadow: 0 0 0 2px rgba(108, 52, 131, 0.2);
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--marrom-claro);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--branco);
+}
+
+/* Tabelas */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--marrom-claro);
+}
+
+.table th {
+    background-color: var(--marrom-medio);
+    color: var(--dourado-claro);
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(141, 110, 99, 0.1);
+}
+
+/* Alertas */
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Rating */
+.rating {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--marrom-claro);
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: var(--dourado-medio);
+}
+
+/* Grid de livros */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.book-card {
+    background-color: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-cover {
+    height: 300px;
+    background-color: var(--marrom-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dourado-claro);
+    font-weight: 600;
+}
+
+.book-info {
+    padding: 1rem;
+}
+
+.book-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--marrom-escuro);
+}
+
+.book-author {
+    color: var(--roxo-medio);
+    margin-bottom: 1rem;
+}
+
+.book-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Calendário */
+.calendar {
+    background-color: var(--branco);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.calendar-header {
+    background-color: var(--marrom-medio);
+    color: var(--dourado-claro);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid var(--marrom-claro);
+    font-weight: 600;
+    background-color: var(--roxo-escuro);
+    color: var(--dourado-claro);
+}
+
+.calendar-date {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid var(--marrom-claro);
+    min-height: 80px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.calendar-date:hover {
+    background-color: rgba(141, 110, 99, 0.1);
+}
+
+.calendar-date.has-event {
+    background-color: rgba(218, 165, 32, 0.2);
+    position: relative;
+}
+
+.calendar-date.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--dourado-medio);
+}
+
+/* Páginas internas */
+.page-header {
+    background: linear-gradient(to right, var(--marrom-escuro), var(--roxo-escuro));
+    color: var(--dourado-claro);
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-content {
+    padding: 2rem 0;
+}
+
+.section-title {
+    color: var(--marrom-escuro);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--dourado-medio);
+}
