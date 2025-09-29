@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devolução - Biblioteca Dourada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Biblioteca Dourada</h1>
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="emprestimo.html">Empréstimos</a>
+                <a href="devolucao.html">Devolução</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Devolução de Livros</h2>
+        
+        <div class="form-container">
+            <h3>Avaliar Livro Devolvido</h3>
+            <form>
+                <div class="form-group">
+                    <label for="livro">Livro a Devolver</label>
+                    <select id="livro" required>
+                        <option value="">Selecione o livro</option>
+                        <option value="1">Dom Casmurro - Machado de Assis</option>
+                        <option value="2">O Cortiço - Aluísio Azevedo</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Avaliação</label>
+                    <div class="rating">
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comentario">Comentário (opcional)</label>
+                    <textarea id="comentario" rows="4"></textarea>
+                </div>
+                
+                <button type="submit">Confirmar Devolução</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Biblioteca Dourada</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sistema de rating
+        const stars = document.querySelectorAll('.rating span');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.add('ativo');
+                    } else {
+                        s.classList.remove('ativo');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
