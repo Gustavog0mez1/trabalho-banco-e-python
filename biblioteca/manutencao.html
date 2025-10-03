@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenção - Biblioteca Real</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Biblioteca Real</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="emprestimo.html">Empréstimos</a></li>
+                    <li><a href="devolucao.html">Devolução</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="manutencao.html">Manutenção</a></li>
+                    <li><a href="penalidades.html">Penalidades</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="lista-page">
+        <div class="container">
+            <h2>Controle de Manutenção</h2>
+            
+            <div class="lista-container">
+                <div class="item-lista">
+                    <div class="info-item">
+                        <h3>Dom Casmurro</h3>
+                        <p><strong>Problema:</strong> Páginas soltas</p>
+                        <p><strong>Data do Reporte:</strong> 10/10/2023</p>
+                        <p><strong>Status:</strong> <span class="status pendente">Pendente</span></p>
+                    </div>
+                    <div class="acoes-item">
+                        <button class="btn" onclick="iniciarReparo('Dom Casmurro')">Iniciar Reparo</button>
+                        <button class="btn" onclick="verDetalhes('Dom Casmurro')">Detalhes</button>
+                    </div>
+                </div>
+                
+                <div class="item-lista">
+                    <div class="info-item">
+                        <h3>O Cortiço</h3>
+                        <p><strong>Problema:</strong> Capa danificada</p>
+                        <p><strong>Data do Reporte:</strong> 05/10/2023</p>
+                        <p><strong>Status:</strong> <span class="status andamento">Em Andamento</span></p>
+                    </div>
+                    <div class="acoes-item">
+                        <button class="btn" onclick="concluirReparo('O Cortiço')">Concluir Reparo</button>
+                        <button class="btn" onclick="verDetalhes('O Cortiço')">Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="item-lista">
+                    <div class="info-item">
+                        <h3>Memórias Póstumas</h3>
+                        <p><strong>Problema:</strong> Manchas nas páginas</p>
+                        <p><strong>Data do Reporte:</strong> 01/10/2023</p>
+                        <p><strong>Status:</strong> <span class="status concluido">Concluído</span></p>
+                    </div>
+                    <div class="acoes-item">
+                        <button class="btn" disabled>Concluído</button>
+                        <button class="btn" onclick="verDetalhes('Memórias Póstumas')">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container" style="margin-top: 30px;">
+                <h3>Reportar Novo Problema</h3>
+                <form onsubmit="reportarProblema(event)">
+                    <div class="form-group">
+                        <label for="livro-problema">Livro com Problema</label>
+                        <select id="livro-problema" required>
+                            <option value="">Selecione um livro</option>
+                            <option value="Dom Casmurro">Dom Casmurro</option>
+                            <option value="O Cortiço">O Cortiço</option>
+                            <option value="O Guarani">O Guarani</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-problema">Tipo de Problema</label>
+                        <select id="tipo-problema" required>
+                            <option value="">Selecione o problema</option>
+                            <option value="Páginas soltas">Páginas Soltas</option>
+                            <option value="Capa danificada">Capa Danificada</option>
+                            <option value="Manchas">Manchas nas Páginas</option>
+                            <option value="Rasgo">Rasgo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao-problema">Descrição Detalhada</label>
+                        <textarea id="descricao-problema" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Reportar Problema</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Biblioteca Real. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function iniciarReparo(titulo) {
+            alert('Reparo do livro "' + titulo + '" iniciado com sucesso!');
+        }
+
+        function concluirReparo(titulo) {
+            alert('Reparo do livro "' + titulo + '" concluído com sucesso!');
+        }
+
+        function verDetalhes(titulo) {
+            alert('Detalhes do livro: ' + titulo + '\n\nProblema: Páginas soltas\nData do Reporte: 10/10/2023\nStatus: Em andamento');
+        }
+
+        function reportarProblema(event) {
+            event.preventDefault();
+            const livro = document.getElementById('livro-problema').value;
+            const problema = document.getElementById('tipo-problema').value;
+            
+            alert('Problema reportado com sucesso!\n\nLivro: ' + livro + '\nProblema: ' + problema);
+            
+            // Limpar formulário
+            document.getElementById('livro-problema').value = '';
+            document.getElementById('tipo-problema').value = '';
+            document.getElementById('descricao-problema').value = '';
+        }
+    </script>
+</body>
+</html>
