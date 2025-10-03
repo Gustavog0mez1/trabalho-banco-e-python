@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Casmurro - Biblioteca Real</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        // Verificar se o usuário está logado
+        if (localStorage.getItem('usuarioLogado') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Biblioteca Real</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="emprestimo.html">Empréstimos</a></li>
+                    <li><a href="devolucao.html">Devolução</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="manutencao.html">Manutenção</a></li>
+                    <li><a href="penalidades.html">Penalidades</a></li>
+                    <li><a href="#" onclick="sair()">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="detalhes-page">
+        <div class="container">
+            <div class="livro-detalhes">
+                <div class="livro-imagem">
+                    <img src="https://www.bing.com/th/id/OIP.5nrqu9tlGKmEuNEYddaj_gHaLG?w=160&h=211&c=8&rs=1&qlt=90&o=6&cb=12&dpr=1.3&pid=3.1&rm=2" alt="Dom Casmurro">
+                </div>
+                <div class="livro-info">
+                    <h1>Dom Casmurro</h1>
+                    <p class="autor">Machado de Assis</p>
+                    
+                    <div class="detalhes-livro">
+                        <p><strong>Gênero:</strong> Romance</p>
+                        <p><strong>Ano:</strong> 1899</p>
+                        <p><strong>Páginas:</strong> 256</p>
+                        <p><strong>Status:</strong> <span class="disponivel">Disponível</span></p>
+                    </div>
+                    
+                    <div class="resumo">
+                        <h2>Sinopse</h2>
+                        <p>Dom Casmurro é um romance escrito por Machado de Assis, publicado em 1899. A obra é narrada em primeira pessoa por Bento Santiago, que relembra sua vida desde a adolescência até a idade adulta.</p>
+                        <p>O romance explora temas como ciúme, traição e a subjetividade da memória. A narrativa é marcada pela ironia característica de Machado de Assis.</p>
+                    </div>
+                    
+                    <div class="acoes-detalhes">
+                        <a href="solicitar-emprestimo.html" class="btn emprestar">Solicitar Empréstimo</a>
+                        <a href="finalizar-compra.html" class="btn comprar">Comprar Livro</a>
+                        <a href="catalogo.html" class="btn">Voltar ao Catálogo</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="autor-info">
+                <h2>Sobre o Autor</h2>
+                <div class="autor-detalhes">
+                    <div class="autor-imagem">
+                        <img src="https://th.bing.com/th/id/OIP.AQ9oKDwjZbdl2Btz-O5NdQHaFl?w=217&h=180&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="Machado de Assis">
+                    </div>
+                    <div class="biografia">
+                        <p><strong>Machado de Assis</strong> (1839-1908) foi um escritor brasileiro, considerado o maior nome da literatura brasileira.</p>
+                        <p>Escreveu em praticamente todos os gêneros literários, sendo poeta, romancista, cronista, dramaturgo, contista, folhetinista, jornalista e crítico literário.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Biblioteca Real. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function sair() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('usuarioLogado');
+                localStorage.removeItem('usuarioEmail');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>
