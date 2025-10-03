@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Real - Início</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Biblioteca Real</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="emprestimo.html">Empréstimos</a></li>
+                    <li><a href="devolucao.html">Devolução</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="manutencao.html">Manutenção</a></li>
+                    <li><a href="penalidades.html">Penalidades</a></li>
+                    <li><a href="#" onclick="sair()">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Bem-vindo à Biblioteca Real</h2>
+                <p id="mensagemBoasVindas">Descubra um mundo de conhecimento e imaginação</p>
+                <a href="catalogo.html" class="btn">Explorar Catálogo</a>
+            </div>
+        </section>
+
+        <section class="destaques">
+            <div class="container">
+                <h2>Livros em Destaque</h2>
+                <div class="livros-grid">
+                    <div class="livro-card">
+                        <img src="https://www.bing.com/th/id/OIP.5nrqu9tlGKmEuNEYddaj_gHaLG?w=160&h=211&c=8&rs=1&qlt=90&o=6&cb=12&dpr=1.3&pid=3.1&rm=2" alt="Dom Casmurro">
+                        <h3>Dom Casmurro</h3>
+                        <p>Machado de Assis</p>
+                        <a href="livro-detalhes.html" class="btn">Ver Detalhes</a>
+                    </div>
+                    <div class="livro-card">
+                        <img src="https://th.bing.com/th/id/OIP.foWJloCR5i9Jep9w_8XhCgHaLH?w=146&h=219&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="O Cortiço">
+                        <h3>O Cortiço</h3>
+                        <p>Aluísio Azevedo</p>
+                        <a href="livro-detalhes.html" class="btn">Ver Detalhes</a>
+                    </div>
+                    <div class="livro-card">
+                        <img src="https://th.bing.com/th/id/OIP.IscQ2op7VsskcheyyL3u8wAAAA?w=208&h=294&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3" alt="O Guarani">
+                        <h3>O Guarani</h3>
+                        <p>José de Alencar</p>
+                        <a href="livro-detalhes.html" class="btn">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Biblioteca Real. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Verificar se o usuário está logado
+        if (localStorage.getItem('usuarioLogado') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // Mostrar email do usuário logado
+        const usuarioEmail = localStorage.getItem('usuarioEmail');
+        if (usuarioEmail) {
+            document.getElementById('mensagemBoasVindas').textContent = 
+                'Olá, ' + usuarioEmail + '! Descubra um mundo de conhecimento e imaginação';
+        }
+
+        function sair() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('usuarioLogado');
+                localStorage.removeItem('usuarioEmail');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>
