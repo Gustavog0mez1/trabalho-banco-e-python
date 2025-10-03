@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Biblioteca Real</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Biblioteca Real</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="emprestimo.html">Empréstimos</a></li>
+                    <li><a href="devolucao.html">Devolução</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="manutencao.html">Manutenção</a></li>
+                    <li><a href="penalidades.html">Penalidades</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="lista-page">
+        <div class="container">
+            <h2>Eventos da Biblioteca</h2>
+            
+            <div class="calendario">
+                <div class="cabecalho-calendario">
+                    <button class="btn" onclick="mudarMes(-1)">‹</button>
+                    <h3 id="mes-atual">Outubro 2023</h3>
+                    <button class="btn" onclick="mudarMes(1)">›</button>
+                </div>
+                
+                <div class="dias-semana">
+                    <div class="dia-semana">Dom</div>
+                    <div class="dia-semana">Seg</div>
+                    <div class="dia-semana">Ter</div>
+                    <div class="dia-semana">Qua</div>
+                    <div class="dia-semana">Qui</div>
+                    <div class="dia-semana">Sex</div>
+                    <div class="dia-semana">Sáb</div>
+                </div>
+                
+                <div class="dias-mes" id="calendario-dias">
+                    <!-- Os dias serão gerados pelo JavaScript -->
+                </div>
+            </div>
+            
+            <div class="lista-container">
+                <div class="item-lista">
+                    <div class="info-item">
+                        <h3>Clube de Leitura</h3>
+                        <p><strong>Data:</strong> 15/10/2023 - 14:00</p>
+                        <p><strong>Local:</strong> Sala Principal</p>
+                        <p>Discussão sobre o livro Dom Casmurro</p>
+                    </div>
+                    <div class="acoes-item">
+                        <button class="btn" onclick="participarEvento('Clube de Leitura')">Participar</button>
+                    </div>
+                </div>
+                
+                <div class="item-lista">
+                    <div class="info-item">
+                        <h3>Oficina de Escrita</h3>
+                        <p><strong>Data:</strong> 17/10/2023 - 10:00</p>
+                        <p><strong>Local:</strong> Sala Multiuso</p>
+                        <p>Workshop de escrita criativa</p>
+                    </div>
+                    <div class="acoes-item">
+                        <button class="btn" onclick="participarEvento('Oficina de Escrita')">Participar</button>
+                    </div>
+                </div>
+
+                <div class="item-lista">
+                    <div class="info-item">
+                        <h3>Lançamento de Livro</h3>
+                        <p><strong>Data:</strong> 20/10/2023 - 19:00</p>
+                        <p><strong>Local:</strong> Auditório</p>
+                        <p>Lançamento do novo livro "Horizontes Perdidos"</p>
+                    </div>
+                    <div class="acoes-item">
+                        <button class="btn" onclick="participarEvento('Lançamento de Livro')">Participar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container" style="margin-top: 30px;">
+                <h3>Sugerir Novo Evento</h3>
+                <form onsubmit="sugerirEvento(event)">
+                    <div class="form-group">
+                        <label for="titulo-evento">Título do Evento</label>
+                        <input type="text" id="titulo-evento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-evento">Data do Evento</label>
+                        <input type="date" id="data-evento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao-evento">Descrição</label>
+                        <textarea id="descricao-evento" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Sugerir Evento</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Biblioteca Real. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let dataAtual = new Date();
+        let mesAtual = dataAtual.getMonth();
+        let anoAtual = dataAtual.getFullYear();
+
+        // Eventos fixos para demonstração
+        const eventos = {
+            '2023-10-15': 'Clube de Leitura',
+            '2023-10-17': 'Oficina de Escrita',
+            '2023-10-20': 'Lançamento de Livro',
+            '2023-10-28': 'Noite de Poesia',
+            '2023-11-05': 'Contação de Histórias',
+            '2023-11-12': 'Workshop de Pintura'
+        };
+
+        function gerarCalendario(mes, ano) {
+            const primeiroDia = new Date(ano, mes, 1);
+            const ultimoDia = new Date(ano, mes + 1, 0);
+            const diasNoMes = ultimoDia.getDate();
+            const primeiroDiaSemana = primeiroDia.getDay();
+            
+            const calendarioDias = document.getElementById('calendario-dias');
+            const mesAtualElement = document.getElementById('mes-atual');
+            
+            // Atualizar título do mês
+            const nomesMeses = [
+                'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+            ];
+            mesAtualElement.textContent = `${nomesMeses[mes]} ${ano}`;
+            
+            // Limpar calendário
+            calendarioDias.innerHTML = '';
+            
+            // Dias vazios no início
+            for (let i = 0; i < primeiroDiaSemana; i++) {
+                const diaVazio = document.createElement('div');
+                diaVazio.className = 'dia';
+                calendarioDias.appendChild(diaVazio);
+            }
+            
+            // Dias do mês
+            for (let dia = 1; dia <= diasNoMes; dia++) {
+                const diaElement = document.createElement('div');
+                diaElement.className = 'dia';
+                diaElement.textContent = dia;
+                
+                // Verificar se é hoje
+                const hoje = new Date();
+                if (dia === hoje.getDate() && mes === hoje.getMonth() && ano === hoje.getFullYear()) {
+                    diaElement.classList.add('hoje');
+                }
+                
+                // Verificar se tem evento
+                const dataStr = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+                if (eventos[dataStr]) {
+                    diaElement.classList.add('evento');
+                    diaElement.title = eventos[dataStr];
+                }
+                
+                calendarioDias.appendChild(diaElement);
+            }
+        }
+
+        function mudarMes(direcao) {
+            mesAtual += direcao;
+            
+            if (mesAtual < 0) {
+                mesAtual = 11;
+                anoAtual--;
+            } else if (mesAtual > 11) {
+                mesAtual = 0;
+                anoAtual++;
+            }
+            
+            gerarCalendario(mesAtual, anoAtual);
+        }
+
+        function participarEvento(nomeEvento) {
+            alert('Inscrição confirmada no evento: ' + nomeEvento + '\n\nObrigado por participar!');
+        }
+
+        function sugerirEvento(event) {
+            event.preventDefault();
+            const titulo = document.getElementById('titulo-evento').value;
+            const data = document.getElementById('data-evento').value;
+            
+            alert('Evento sugerido com sucesso!\n\nTítulo: ' + titulo + '\nData: ' + data);
+            
+            // Limpar formulário
+            document.getElementById('titulo-evento').value = '';
+            document.getElementById('data-evento').value = '';
+            document.getElementById('descricao-evento').value = '';
+        }
+
+        // Inicializar calendário
+        gerarCalendario(mesAtual, anoAtual);
+    </script>
+</body>
+</html>
