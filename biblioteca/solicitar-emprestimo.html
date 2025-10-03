@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Empréstimo - Biblioteca Real</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        // Verificar se o usuário está logado
+        if (localStorage.getItem('usuarioLogado') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Biblioteca Real</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="emprestimo.html">Empréstimos</a></li>
+                    <li><a href="devolucao.html">Devolução</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="manutencao.html">Manutenção</a></li>
+                    <li><a href="penalidades.html">Penalidades</a></li>
+                    <li><a href="#" onclick="sair()">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="form-page">
+        <div class="container">
+            <div class="form-container">
+                <div class="livro-imagem" style="text-align: center; margin-bottom: 20px;">
+                    <img src="https://www.bing.com/th/id/OIP.5nrqu9tlGKmEuNEYddaj_gHaLG?w=160&h=211&c=8&rs=1&qlt=90&o=6&cb=12&dpr=1.3&pid=3.1&rm=2" alt="Dom Casmurro" style="max-width: 200px;">
+                </div>
+                
+                <h2>Solicitar Empréstimo</h2>
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h3>Dom Casmurro</h3>
+                    <p class="autor">Machado de Assis</p>
+                </div>
+                
+                <form id="formEmprestimo">
+                    <div class="form-group">
+                        <label for="data-emprestimo">Data do Empréstimo</label>
+                        <input type="date" id="data-emprestimo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="data-devolucao">Data de Devolução</label>
+                        <input type="date" id="data-devolucao" required>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Confirmar Empréstimo</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Biblioteca Real. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function sair() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('usuarioLogado');
+                localStorage.removeItem('usuarioEmail');
+                window.location.href = 'login.html';
+            }
+        }
+
+        document.getElementById('formEmprestimo').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Você acabou de pegar emprestado o livro "Dom Casmurro"!');
+            window.location.href = 'home.html';
+        });
+
+        // Define data mínima como hoje
+        const hoje = new Date().toISOString().split('T')[0];
+        document.getElementById('data-emprestimo').min = hoje;
+        document.getElementById('data-devolucao').min = hoje;
+    </script>
+</body>
+</html>
