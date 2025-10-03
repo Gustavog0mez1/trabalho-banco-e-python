@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Biblioteca Real</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        // Verificar se o usuário está logado
+        if (localStorage.getItem('usuarioLogado') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Biblioteca Real</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="emprestimo.html">Empréstimos</a></li>
+                    <li><a href="devolucao.html">Devolução</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="manutencao.html">Manutenção</a></li>
+                    <li><a href="penalidades.html">Penalidades</a></li>
+                    <li><a href="#" onclick="sair()">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="form-page">
+        <div class="container">
+            <div class="form-container">
+                <div class="livro-imagem" style="text-align: center; margin-bottom: 20px;">
+                    <img src="https://www.bing.com/th/id/OIP.5nrqu9tlGKmEuNEYddaj_gHaLG?w=160&h=211&c=8&rs=1&qlt=90&o=6&cb=12&dpr=1.3&pid=3.1&rm=2" alt="Dom Casmurro" style="max-width: 200px;">
+                </div>
+                
+                <h2>Finalizar Compra</h2>
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h3>Dom Casmurro</h3>
+                    <p class="autor">Machado de Assis</p>
+                    <p style="font-size: 24px; color: #4A235A; font-weight: bold;">R$ 29,90</p>
+                </div>
+                
+                <form id="formCompra">
+                    <div class="form-group">
+                        <label for="nome-cartao">Nome no Cartão</label>
+                        <input type="text" id="nome-cartao" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="numero-cartao">Número do Cartão</label>
+                        <input type="text" id="numero-cartao" required>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="validade">Validade</label>
+                            <input type="text" id="validade" placeholder="MM/AA" required>
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Finalizar Compra</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Biblioteca Real. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function sair() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('usuarioLogado');
+                localStorage.removeItem('usuarioEmail');
+                window.location.href = 'login.html';
+            }
+        }
+
+        document.getElementById('formCompra').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Você acabou de comprar o livro "Dom Casmurro"!');
+            window.location.href = 'home.html';
+        });
+    </script>
+</body>
+</html>
